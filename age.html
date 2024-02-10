@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حاسبة العمر والأبراج</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #df47b9;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #385f91;
+        }
+        input[type="date"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ff80ab;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #ff5c8d;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        button:hover {
+            background-color: #ff3c74;
+        }
+        button:active {
+            background-color: #ff1f57;
+            transform: scale(0.95);
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>حاسبة العمر والأبراج</h1>
+        <form id="ageCalculatorForm">
+            <label for="birthDate">تاريخ الميلاد:</label>
+            <input type="date" id="birthDate" name="birthDate" required><br>
+            <button type="button" onclick="calculateAgeAndZodiac()">احسب</button>
+        </form>
+    </div>
+    <table id="resultTable" class="container">
+        <thead>
+            <tr>
+                <th>العمر</th>
+                <th>برجك الفلكي</th>
+                <th>مميزات البرج</th>
+                <th>ما حدث في نفس يوم ميلادك</th>
+            </tr>
+        </thead>
+        <tbody id="resultBody"></tbody>
+    </table>
+
+    <script>
+        function calculateAgeAndZodiac() {
+            var birthDate = new Date(document.getElementById('birthDate').value);
+            var today = new Date();
+            var age = today.getFullYear() - birthDate.getFullYear();
+            var month = today.getMonth() - birthDate.getMonth();
+            if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            var zodiacSigns = ['الحمل', 'الثور', 'الجوزاء', 'السرطان', 'الأسد', 'العذراء', 'الميزان', 'العقرب', 'القوس', 'الجدي', 'الدلو', 'الحوت'];
+            var zodiacIndex = (birthDate.getMonth() + 1) % 12;
+            var zodiacSign = zodiacSigns[zodiacIndex];
+            
+            // بعض المميزات لكل برج
+            var zodiacFeatures = [
+                'مميزات الحمل',
+                'مميزات الثور',
+                'مميزات الجوزاء',
+                'مميزات السرطان',
+                'مميزات الأسد',
+                'مميزات العذراء',
+                'مميزات الميزان',
+                'مميزات العقرب',
+                'مميزات القوس',
+                'مميزات الجدي',
+                'مميزات الدلو',
+                'مميزات الحوت'
+            ];
+            var zodiacFeaturesText = zodiacFeatures[zodiacIndex];
+            
+            // حدث نفس يوم الميلاد
+            var sameDayEvents = [
+                'نص الحدث لبرج الحمل',
+                'نص الحدث لبرج الثور',
+                'نص الحدث لبرج الجوزاء',
+                'نص الحدث لبرج السرطان',
+                'نص الحدث لبرج الأسد',
+                'نص الحدث لبرج العذراء',
+                'نص الحدث لبرج الميزان',
+                'نص الحدث لبرج العقرب',
+                'نص الحدث لبرج القوس',
+                'نص الحدث لبرج الجدي',
+                'نص الحدث لبرج الدلو',
+                'نص الحدث لبرج الحوت'
+            ];
+            var sameDayEventText = sameDayEvents[zodiacIndex];
+
+            var resultBody = document.getElementById('resultBody');
+            resultBody.innerHTML = ''; // Clear previous results
+
+            var row = document.createElement('tr');
+            var ageCell = document.createElement('td');
+            var zodiacCell = document.createElement('td');
+            var featuresCell = document.createElement('td');
+            var eventCell = document.createElement('td');
+
+            ageCell.textContent = age + ' سنة';
+            zodiacCell.textContent = zodiacSign;
+            featuresCell.textContent = zodiacFeaturesText;
+            eventCell.textContent = sameDayEventText;
+
+            row.appendChild(ageCell);
+            row.appendChild(zodiacCell);
+            row.appendChild(featuresCell);
+            row.appendChild(eventCell);
+
+            resultBody.appendChild(row);
+        }
+    </script>
+</body>
+</html>

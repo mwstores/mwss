@@ -1,0 +1,78 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f4f6;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    color: #df47b9;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #385f91;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ff80ab;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #ff5c8d;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #ff3c74;
+}
+
+button:active {
+    background-color: #ff1f57;
+    transform: scale(0.95);
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.love-result {
+    font-size: 24px;
+    color: transparent;
+    margin-top: 20px;
+    animation: fadeIn 0.5s ease forwards, changeColor 1s ease forwards;
+}
+
+@keyframes changeColor {
+    0% { color: transparent; }
+    100% { color: #ff80ab; }
+}
+button:active {
+    background-color: #ff1f57;
+    transform: scale(0.95) translateY(2px); /* تحريك الزر بشكل عمودي عند الضغط */
+}

@@ -1,0 +1,83 @@
+/* الأنماط العامة */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f3f4f6;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 500px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+form {
+    background-color: #fff;
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+h2{
+    font-family: 'Times New Roman', Times, serif;
+    color: #0056b3;
+}
+
+/* وسائط الاستعلام الإعلامية للهواتف الذكية فقط */
+@media screen and (max-width: 480px) {
+    .container {
+        max-width: 90%; /* جعل الحاوية مرنة */
+        margin: 50px auto; /* تعديل الهوامش */
+    }
+
+    form {
+        padding: 20px; /* تعديل الهوامش */
+        width: 80%; /* جعل النموذج مرناً */
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="submit"] {
+        padding: 8px; /* تعديل الحجم */
+    }
+}
